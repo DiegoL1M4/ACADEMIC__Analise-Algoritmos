@@ -27,4 +27,6 @@ class BinarySearch:
             else:
                 lista[posicao+1] = lista[posicao]
                 lista[posicao] = elemento
+
+        return lista
                 

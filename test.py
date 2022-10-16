@@ -13,7 +13,7 @@ listSet = []
 # List size array (n)
 listSizeArray = []
 for i in range(amountArraySize):
-    listSizeArray.append(random.randrange(10, 10001)) # Array size: 10 ≤ n ≤ 10.000
+    listSizeArray.append(random.randrange(10, 101)) # Array size: 10 ≤ n ≤ 10.000
 
 listSizeArray = sorted(listSizeArray)
 
@@ -41,10 +41,12 @@ for lists in listSet:
     totalTime = 0
     for list in lists:
         # Insertion Sort Test
+        listCopy = list.copy()
         begin = time.time()
-        InsertionSort. insertion_sort(list)
+        len(InsertionSort. insertion_sort(listCopy))
         end = time.time()
         totalTime += (end - begin)
+        print(totalTime)
 
     insertionTimes.append(totalTime / len(lists))
 
@@ -54,31 +56,21 @@ for lists in listSet:
     totalTime = 0
     for list in lists:
         # Binary Search Test
+        listCopy = list.copy()
         begin = time.time()
-        BinarySearch.insertionsort_busca_binaria(list)
+        len(BinarySearch.insertionsort_busca_binaria(listCopy))
         end = time.time()
         totalTime += (end-begin)
+        print(totalTime)
         
     binaryTimes.append(totalTime / len(lists))
 
+print(listSizeArray)
+print(executions)
+
 # Generate graphics: Line
-plt.plot(listSizeArray, insertionTimes, c='blue', ls='-', lw='1', marker='o') # Insertion Sort
-plt.plot(listSizeArray, binaryTimes, c='red', ls='-.', lw='1', marker='o') # Binary Search
+plt.plot(listSizeArray, insertionTimes, c='blue', ls='-', marker='o') # Insertion Sort
+plt.plot(listSizeArray, binaryTimes, c='red', ls='-.', marker='o') # Binary Search
+
+plt.xticks([r for r in range(amountArraySize)], listSizeArray)
 plt.show()
-
-# Generate graphics: Bars
-# plt.bar(listSizeArray, insertionTimes, color='blue') # Insertion Sort
-# plt.bar(listSizeArray, binaryTimes, color='red') # Binary Search
-
-
-
-# barWidth = 0.10 #4legendas
-
-# r1 = np.arange(2)
-# r2 = [x + barWidth for x in r1]
-
-# capsizevar = 6
-
-# plt.bar(r1, insertionTimes, width=barWidth, capsize=capsizevar, color = 'royalblue', label='Insertion')
-# plt.bar(r2, binaryTimes, width=barWidth, capsize=capsizevar, color = 'dodgerblue', label='Binary')
-# plt.show()
