@@ -13,15 +13,20 @@ listSet = []
 # List size array (n)
 listSizeArray = []
 for i in range(amountArraySize):
-    listSizeArray.append(random.randrange(10, 101)) # Array size: 10 ≤ n ≤ 10.000
+    listSizeArray.append(random.randrange(10, 10000 + 1)) # Array size: 10 ≤ n ≤ 10.000
 
 listSizeArray = sorted(listSizeArray)
+# listSizeArray = [10, 40, 80, 100, 150, 250, 350, 450, 550, 650]
+# listSizeArray = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+# listSizeArray = [80, 500, 1000, 3000, 5000, 9000, 10000]
+print(listSizeArray)
 
 # Generate total execution (m)
 executions = []
 for n in listSizeArray:
     m = random.randrange(10, 21) # Total executions: 10 ≤ m ≤ 20
     executions.append([n, m])
+    # executions.append([n, 15])
 
 # Generate lists
 for execution in executions:
@@ -43,10 +48,10 @@ for lists in listSet:
         # Insertion Sort Test
         listCopy = list.copy()
         begin = time.time()
-        len(InsertionSort. insertion_sort(listCopy))
+        InsertionSort. insertion_sort(listCopy)
         end = time.time()
         totalTime += (end - begin)
-        print(totalTime)
+        # print(totalTime)
 
     insertionTimes.append(totalTime / len(lists))
 
@@ -58,10 +63,10 @@ for lists in listSet:
         # Binary Search Test
         listCopy = list.copy()
         begin = time.time()
-        len(BinarySearch.insertionsort_busca_binaria(listCopy))
+        BinarySearch.insertionsort_busca_binaria(listCopy)
         end = time.time()
         totalTime += (end-begin)
-        print(totalTime)
+        # print(totalTime)
         
     binaryTimes.append(totalTime / len(lists))
 
@@ -69,8 +74,13 @@ print(listSizeArray)
 print(executions)
 
 # Generate graphics: Line
-plt.plot(listSizeArray, insertionTimes, c='blue', ls='-', marker='o') # Insertion Sort
-plt.plot(listSizeArray, binaryTimes, c='red', ls='-.', marker='o') # Binary Search
+plt.plot(listSizeArray, insertionTimes, c='blue', ls='-', marker='o', label='Insertion-sort') # Insertion Sort
+plt.plot(listSizeArray, binaryTimes, c='red', ls='-.', marker='D', label='Binary-search') # Binary Search
 
-plt.xticks([r for r in range(amountArraySize)], listSizeArray)
+plt.title("Insertion Sort x Binary Search")
+plt.xlabel("Tamanho do vetor")
+plt.ylabel("Tempo de execução")
+plt.legend(loc='upper left')
+
+plt.xticks(listSizeArray)
 plt.show()
