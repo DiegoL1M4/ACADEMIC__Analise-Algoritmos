@@ -18,15 +18,13 @@ for i in range(amountArraySize):
 listSizeArray = sorted(listSizeArray)
 # listSizeArray = [10, 40, 80, 100, 150, 250, 350, 450, 550, 650]
 # listSizeArray = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
-# listSizeArray = [80, 500, 1000, 3000, 5000, 9000, 10000]
-print(listSizeArray)
+# listSizeArray = [80, 500, 1000, 2000, 3000, 4000, 5000, 7000, 9000, 10000]
 
 # Generate total execution (m)
 executions = []
 for n in listSizeArray:
     m = random.randrange(10, 21) # Total executions: 10 ≤ m ≤ 20
     executions.append([n, m])
-    # executions.append([n, 15])
 
 # Generate lists
 for execution in executions:
@@ -51,7 +49,6 @@ for lists in listSet:
         InsertionSort. insertion_sort(listCopy)
         end = time.time()
         totalTime += (end - begin)
-        # print(totalTime)
 
     insertionTimes.append(totalTime / len(lists))
 
@@ -63,10 +60,9 @@ for lists in listSet:
         # Binary Search Test
         listCopy = list.copy()
         begin = time.time()
-        BinarySearch.insertionsort_busca_binaria(listCopy)
+        BinarySearch.binary_search_insertion_sort_iterative(listCopy)
         end = time.time()
         totalTime += (end-begin)
-        # print(totalTime)
         
     binaryTimes.append(totalTime / len(lists))
 
@@ -75,7 +71,7 @@ print(executions)
 
 # Generate graphics: Line
 plt.plot(listSizeArray, insertionTimes, c='blue', ls='-', marker='o', label='Insertion-sort') # Insertion Sort
-plt.plot(listSizeArray, binaryTimes, c='red', ls='-.', marker='D', label='Binary-search') # Binary Search
+plt.plot(listSizeArray, binaryTimes, c='red', ls='-.', marker='D', label='Binary-insertion-sort') # Binary Search
 
 plt.title("Insertion Sort x Binary Search")
 plt.xlabel("Tamanho do vetor")

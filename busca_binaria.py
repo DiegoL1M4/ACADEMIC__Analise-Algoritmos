@@ -1,32 +1,29 @@
 
 class BinarySearch:
-    def busca_binaria(lista, inicio, fim, elemento):
-        meio = ((fim - inicio) // 2) + inicio
-
-        if lista[meio] == elemento or inicio >= fim:
-            return meio
-        elif lista[meio] < elemento:
-            return BinarySearch.busca_binaria(lista, meio+1, fim, elemento)
-        else:
-            return BinarySearch.busca_binaria(lista, inicio, meio-1, elemento)
-
-
-    def insertionsort_busca_binaria(lista):
-        for i in range(len(lista)):
-            elemento = lista[i]
-            j = i-1
-
-            posicao = BinarySearch.busca_binaria(lista, 0, j, elemento)
-
-            while j >= posicao:
-                lista[j+1] = lista[j]
-                j = j-1
-
-            if lista[posicao] <= elemento:
-                lista[posicao+1] = elemento
+    def binary_search_iterative(A, start, end, value):
+        while(start < end):
+            mid = (start + end) // 2
+            if (A[mid] <= value):
+                start = mid + 1
             else:
-                lista[posicao+1] = lista[posicao]
-                lista[posicao] = elemento
+                end = mid
+        
+        return start
 
-        return lista
-                
+    def binary_search_insertion_sort_iterative(A):
+        for j in range(1, len(A)):
+            value = A[j]
+            i_value = BinarySearch.binary_search_iterative(A, 0, j, value)
+            
+            newList = []
+
+            if(i_value - 1 >= 0):
+                newList.extend(A[0:i_value])
+            newList.extend([A[j]])
+            newList.extend(A[i_value:j])
+            if(j + 1 <= len(A) - 1):
+                newList.extend(A[j + 1:len(A)])
+
+            A = newList
+        
+        return A
