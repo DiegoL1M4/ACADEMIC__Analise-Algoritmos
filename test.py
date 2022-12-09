@@ -3,8 +3,8 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-from busca_binaria import BinarySearch
-from insertion_sort import InsertionSort
+from codes.busca_binaria import BinarySearch
+from codes.insertion_sort import InsertionSort
 
 # Variables
 amountArraySize = 10
