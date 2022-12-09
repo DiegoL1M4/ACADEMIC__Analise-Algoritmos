@@ -1,6 +1,6 @@
 
-class BinarySearch:
-    def binary_search_iterative(A, start, end, value):
+class BinarySort:
+    def binary_sort_iterative(A, start, end, value):
         while(start < end):
             mid = (start + end) // 2
             if (A[mid] <= value):
@@ -10,10 +10,10 @@ class BinarySearch:
         
         return start
 
-    def binary_search_insertion_sort_iterative(A):
+    def binary_sort_insertion_sort_iterative(A):
         for j in range(1, len(A)):
             value = A[j]
-            i_value = BinarySearch.binary_search_iterative(A, 0, j, value)
+            i_value = BinarySort.binary_sort_iterative(A, 0, j, value)
             
             newList = []
 

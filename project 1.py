@@ -3,7 +3,7 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-from codes.busca_binaria import BinarySearch
+from codes.binary_sort import BinarySort
 from codes.insertion_sort import InsertionSort
 
 # Variables
@@ -60,7 +60,7 @@ for lists in listSet:
         # Binary Search Test
         listCopy = list.copy()
         begin = time.time()
-        BinarySearch.binary_search_insertion_sort_iterative(listCopy)
+        BinarySort.binary_sort_insertion_sort_iterative(listCopy)
         end = time.time()
         totalTime += (end-begin)
         
