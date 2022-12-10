@@ -10,10 +10,7 @@ class RodCutRecursive:
 
         max = RodCutRecursive.cutRodRecursive(price, memo, sizes, n)
 
-        print("Tamanhos das barras: ", end="")
-        RodCutRecursive.showCut(sizes, n)
-
-        return max
+        return max, sizes
 
     def cutRodRecursive(price, memo, sizes, n):
         i = 0

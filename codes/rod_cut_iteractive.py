@@ -17,11 +17,8 @@ class RodCutIteractive:
                     max_val =price[j] + memo[i-j-1]
                     sizes[i] = j+1
             memo[i] = max_val
-
-        print("Tamanhos das barras: ", end="")
-        RodCutIteractive.showCut(sizes, n)
     
-        return memo[n]
+        return memo[n], sizes
 
     def showCut(sizes, n):
         if(n == sizes[n]):

@@ -6,13 +6,24 @@ import numpy as np
 from codes.rod_cut_iteractive import RodCutIteractive
 from codes.rod_cut_recursive import RodCutRecursive
 
-P = [2, 3]
-P = [2, 3, 7, 5]
-P = [1, 5, 8, 9]
+# Unit Test (Demonstration)
+P = [1, 5, 8, 9] # 2 2
+P = [2, 3, 7, 5] # 1 3
+P = [2, 3, 7, 50] # 4
+P = [20, 3, 7, 50] # 1 1 1 1
+
 print("")
-print("Custo Iterativo: " + str(RodCutIteractive.cutRod(P, len(P))))
+ex = RodCutIteractive.cutRod(P, len(P))
+print("Custo Iterativo: " + str(ex[0]))
+print("Tamanhos das barras: ", end="")
+RodCutIteractive.showCut(ex[1], len(P))
+
 print("")
-print("Custo Recursivo: " + str(RodCutRecursive.cutRod(P, len(P))))
+
+ex = RodCutRecursive.cutRod(P, len(P))
+print("Custo Recursivo: " + str(ex[0]))
+print("Tamanhos das barras: ", end="")
+RodCutRecursive.showCut(ex[1], len(P))
 print("")
 
 # Variables
@@ -22,12 +33,12 @@ listSet = []
 # List size array (n)
 listSizeArray = []
 for i in range(amountArraySize):
-    listSizeArray.append(random.randrange(10, 1000 + 1)) # Array size: 10 ≤ n ≤ 10.000
+    listSizeArray.append(random.randrange(10, 900 + 1)) # Array size: 10 ≤ n ≤ 1.000
 
 listSizeArray = sorted(listSizeArray)
-# listSizeArray = [10, 40, 80, 100, 150, 250, 350, 450, 550, 650]
-# listSizeArray = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
-# listSizeArray = [80, 500, 1000, 2000, 3000, 4000, 5000, 7000, 9000, 10000]
+# listSizeArray = [10, 40, 80, 100, 150, 250, 400, 650, 850, 900]
+# listSizeArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+# listSizeArray = [100, 200, 300, 400, 500, 600, 700, 800, 850, 900]
 
 # Generate total execution (m)
 executions = []
@@ -41,7 +52,7 @@ for execution in executions:
     for m in range(execution[1]):
         list = []
         for n in range(execution[0]):
-            list.append(random.uniform(1, n + 1)) # Array element: −2n ≤ A[i] ≤ 2n
+            list.append(random.uniform(1, n + 1)) # Array element: 1 ≤ A[i] ≤ n
         
         random.shuffle(list)
         listExecutions.append(list)
